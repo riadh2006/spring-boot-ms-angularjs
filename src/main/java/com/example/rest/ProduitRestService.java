@@ -26,5 +26,10 @@ public class ProduitRestService {
 	public Produit getProduit(@PathVariable("id") Long id){
 		return produitRepository.findOne(id); 
 	}
+	
+	@RequestMapping(value="/produits", method = RequestMethod.POST)
+	public Produit getProduit(Produit produit){
+		return produitRepository.save(produit); 
+	}
 
 }
