@@ -40,4 +40,9 @@ public class ProduitRestService {
 		return produitRepository.saveAndFlush(produit); 
 	}
 
+	@RequestMapping(value="/produits/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable("id") Long id){
+		produitRepository.delete(id); 
+	}
+
 }
