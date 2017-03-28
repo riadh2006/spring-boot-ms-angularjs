@@ -10,7 +10,7 @@
 
 	<div class="container">
 		<input type="text" ng-model="motCLe" />
-		<button ng-click="chercherProduits()">Chercher</button>
+		<button ng-click="getProduits()">Chercher</button>
 	</div>
 	<div class="container">
 		<table class="table table-striped">
@@ -32,6 +32,14 @@
 		</table>
 	</div>
 
+	<!-- First solution -->
+	<!-- 		<button ng-repeat="abc in totalPages">{{abc}}</button> -->
+
+	<!-- Second solution -->
+	<ul class="nav nav-pills">
+		<li ng-class="{active : currentPage == $index}" ng-repeat="abc in totalPages track by $index"><a
+			ng-click="goToPage($index)">{{$index + 1}}</a></li>
+	</ul>
 
 	<script type="text/javascript"
 		src="node_modules/angular/angular.min.js"></script>
