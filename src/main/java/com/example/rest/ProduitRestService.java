@@ -3,6 +3,8 @@ package com.example.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,12 @@ public class ProduitRestService {
 	@RequestMapping(value="/produits", method = RequestMethod.GET)
 	public List<Produit> listeProduit(){
 		return produitRepository.findAll(); 
+	}
+
+	// List products by page
+	@RequestMapping(value="/produits-pages", method = RequestMethod.GET)
+	public Page<Produit> listeProduitByPage(int page, int size){
+		return produitRepository.findAll(new PageRequest(page, size)); 
 	}
 	
 	@RequestMapping(value="/produits/{id}", method = RequestMethod.GET)
